@@ -12,6 +12,16 @@
 
 #Requires AutoHotkey v2.0
 #SingleInstance Force
+
+; Dark mode
+; https://www.autohotkey.com/boards/viewtopic.php?p=522498#p522498
+; https://stackoverflow.com/a/58547831/894589
+uxtheme := DllCall("GetModuleHandle", "str", "uxtheme", "ptr")
+SetPreferredAppMode := DllCall("GetProcAddress", "ptr", uxtheme, "ptr", 135, "ptr")
+FlushMenuThemes := DllCall("GetProcAddress", "ptr", uxtheme, "ptr", 136, "ptr")
+DllCall(SetPreferredAppMode, "int", 1)
+DllCall(FlushMenuThemes)
+
 QL_CreateMenu()
 return
 
