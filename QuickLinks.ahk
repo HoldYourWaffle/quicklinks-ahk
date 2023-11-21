@@ -10,7 +10,7 @@
 ;- Submenu's with the same name are allowed now
 ;- Special thanks to Swagfag and Just me to fix the getExtIcon function to version V2
 
-#Requires AutoHotkey v2.0-beta.1
+#Requires AutoHotkey v2.0
 #SingleInstance Force
 QL_CreateMenu()
 return
