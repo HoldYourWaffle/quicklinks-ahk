@@ -154,6 +154,23 @@ getExtIcon(Ext) {
 	Return I[1] " - " IndexOfIconResource(I[1], RegExReplace(I[2], "[^\d]+"))
 }
 
+; https://www.autohotkey.com/boards/viewtopic.php?p=489649#p489649
+GetFileIcon(File, SmallIcon := 1) {
+    Local hIcon
+    Static cbFileInfo := A_PtrSize + 688
+    SHFILEINFO := Buffer(cbFileInfo, 0)
+
+    DllCall("Shell32.dll\SHGetFileInfoW"
+        , "WStr", File
+        , "UInt", 0
+        , "Ptr" , SHFILEINFO
+        , "UInt", cbFileInfo
+        , "UInt", 0x100 | SmallIcon) ; SHGFI_ICON
+
+    hIcon := NumGet(SHFILEINFO, 0, "Ptr")
+    Return hIcon ? hIcon : LoadPicture("shell32.dll", "w16 h16 Icon1", &Type)
+}
+
 IndexOfIconResource(Filename, ID) {
 	; If the DLL isn't already loaded, load it as a data file.
 	If !DllCall("GetModuleHandle", "Str", Filename, "UPtr")
