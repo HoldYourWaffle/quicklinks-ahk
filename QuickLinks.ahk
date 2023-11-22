@@ -1,3 +1,10 @@
+; TODO cancel with escape
+; TODO function-ify, decouple creating the menu itself from assigning it to a key (could be assigned to tray)
+; TODO add a "refresh" option
+; TODO add a "open links folder" option (toggleable)
+; TODO incorporate GetFileIcon
+
+
 ; Originally by AHK_user, retrieved on 22 november 2023 from:
 ; https://www.autohotkey.com/boards/viewtopic.php?p=429206#p429206
 
